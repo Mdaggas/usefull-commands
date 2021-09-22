@@ -61,3 +61,144 @@ You can install Postgresql in two diffrenet ways, you can install there GUI App 
 ### GUI App installation ***preferred***
 
 - Go to <https://postgresapp.com/downloads.html> and download the lateset version.
+
+- Install the app
+
+## Now lets create our first project
+
+1. Go to Documents
+
+``` bash
+ cd Documents
+```
+
+2. Create a project folder
+
+``` bash
+ mkdir testdjango 
+```
+
+3. Go into the folder
+
+``` bash
+ cd testdjango
+```
+
+4. Install virtual inviroment
+
+``` bash
+ python3 -m venv venv
+```
+
+5. run the virtual inviroment
+
+``` bash
+ source venv/bin/activate
+```
+
+6. Install django
+
+``` bash
+ pip3 install django
+```
+
+7. Create django project
+
+``` bash
+django-admin startproject PROJECTNAME
+```
+
+***now youll notice a folder called 'app' and 'venv' we need to change the app folder name to out projects name***
+
+8. Rename the app folder
+
+``` bash
+ mv app PROJECTNAME
+```
+
+9. Go into the project
+
+``` bash
+ cd PROJECTNAME
+```
+
+***Now you'll see the main app folder and a manage.py file***
+
+***To start the project we need to change the database settings to pstgresql since django comes defult with sqlite3***
+
+10. Install postgres module
+
+``` bash
+ pip install psycopg2
+```
+
+11. Changing django database settings
+
+``` bash
+ open PROJECTNAME/settings.py
+```
+
+12. Change the DATABASE section to the following and change the **DBNAME**
+
+``` bash
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': "DBNAME",
+        'USER': "postgres",
+        'PASSWORD': "",
+        'HOST': "127.0.0.1",
+        'PORT': "5432",
+    }
+}
+```
+
+13. Open postgres application an Click on start
+
+
+14. Click on the database icon that says "postgres"
+
+
+15. In the new terminal window create your databse with the name that you typed in the settings file.
+
+``` bash
+ CREATE DATABASE DBNAME;
+```
+
+16. Go back to project terminal and migrate your database
+
+``` bash
+ ./manage.py migrate
+```
+
+17. Start Your project 
+
+``` bash 
+ ./manage.py runserver
+```
+
+18. Open your browser and enter the following ip
+
+``` ip
+127.0.0.1:8000
+```
+
+### Thats it!
+
+### We are done.
+
+
+## Additional command for django
+
+
+- Create an app inside your project
+
+``` bash 
+ ./manage.py startapp APPNAME
+```
+
+- Create django super-user "admin"
+
+``` bash
+ ./manage.py createsuperuser
+```
